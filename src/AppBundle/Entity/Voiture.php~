@@ -1,0 +1,227 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * This is a dummy entity. Remove it!
+ *
+ * @ApiResource
+ * @ORM\Entity
+ */
+class Voiture
+{
+
+    /**
+     * @var int The id
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string The entity Id
+     *
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank
+     */
+    private $matriculeVoiture;
+
+    /**
+     * @var Client Something else
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @Assert\NotNull
+     */
+    private $clientVoiture = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $marqueVoiture = '';
+
+     /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $modeleVoiture = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $couleurVoiture = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $categorieVoiture = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $puissanceVoiture = '';
+
+    /**
+     * @var float Something else
+     *
+     * @ORM\Column(type="float")
+     */
+    private $coutparjourVoiture = '';
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMatriculeVoiture(): string
+    {
+        return $this->matriculeVoiture;
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClientVoiture(): Client
+    {
+        return $this->clientVoiture;
+    }
+
+    /**
+     * @param Client $clientVoiture
+     */
+    public function setClientVoiture(Client $clientVoiture)
+    {
+        $this->clientVoiture = $clientVoiture;
+    }
+
+
+    /**
+     * @param string $matriculeVoiture
+     */
+    public function setMatriculeVoiture(string $matriculeVoiture)
+    {
+        $this->matriculeVoiture = $matriculeVoiture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMarqueVoiture(): string
+    {
+        return $this->marqueVoiture;
+    }
+
+    /**
+     * @param string $marqueVoiture
+     */
+    public function setMarqueVoiture(string $marqueVoiture)
+    {
+        $this->marqueVoiture = $marqueVoiture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModeleVoiture(): string
+    {
+        return $this->modeleVoiture;
+    }
+
+    /**
+     * @param string $modeleVoiture
+     */
+    public function setModeleVoiture(string $modeleVoiture)
+    {
+        $this->modeleVoiture = $modeleVoiture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCouleurVoiture(): string
+    {
+        return $this->couleurVoiture;
+    }
+
+    /**
+     * @param string $couleurVoiture
+     */
+    public function setCouleurVoiture(string $couleurVoiture)
+    {
+        $this->couleurVoiture = $couleurVoiture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorieVoiture(): string
+    {
+        return $this->categorieVoiture;
+    }
+
+    /**
+     * @param string $categorieVoiture
+     */
+    public function setCategorieVoiture(string $categorieVoiture)
+    {
+        $this->categorieVoiture = $categorieVoiture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPuissanceVoiture(): string
+    {
+        return $this->puissanceVoiture;
+    }
+
+    /**
+     * @param string $puissanceVoiture
+     */
+    public function setPuissanceVoiture(string $puissanceVoiture)
+    {
+        $this->puissanceVoiture = $puissanceVoiture;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCoutparjourVoiture(): float
+    {
+        return $this->coutparjourVoiture;
+    }
+
+    /**
+     * @param float $coutparjourVoiture
+     */
+    public function setCoutparjourVoiture(float $coutparjourVoiture)
+    {
+        $this->coutparjourVoiture = $coutparjourVoiture;
+    }
+
+
+
+}

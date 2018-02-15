@@ -1,0 +1,179 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * This is a dummy entity. Remove it!
+ *
+ * @ApiResource
+ * @ORM\Entity
+ */
+class Client
+{
+    /**
+     * @var int The id
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string The entity Id
+     *
+     * @ORM\Column(unique=true)
+     * @Assert\NotBlank
+     */
+    private $cinClient;
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $nomClient = '';
+
+     /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $prenomClient = '';
+
+    /**
+     * @var \DateTime Something else
+     *
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank
+     * @Assert\Date()
+     */
+    private $dateNaissanceClient = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $addresseClient = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $telephoneClient = '';
+
+    /**
+     * @var \DateTime Something else
+     *
+     * @ORM\Column(type="date")
+     * @Assert\Date()
+     */
+    private $dateInscriptionClient = '';
+
+    /**
+     * @var string Something else
+     *
+     * @ORM\Column
+     * @Assert\NotBlank
+     */
+    private $passwordClient = '';
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+
+    public function getCinClient() : string
+    {
+        return $this->cinClient;
+    }
+
+    public function setCinClient(string $cinClient)
+    {
+        $this->cinClient = $cinClient;
+    }
+
+    public function getNomClient() : string
+    {
+        return $this->nomClient;
+    }
+
+    public function setNomClient(string $nomClient)
+    {
+        $this->nomClient = $nomClient;
+    }
+
+    public function getPrenomClient() : string
+    {
+        return $this->prenomClient;
+    }
+
+    public function setPrenomClient(string $prenomClient)
+    {
+        $this->prenomClient = $prenomClient;
+    }
+
+    public function getDateNaissanceClient() : \DateTime
+    {
+        return $this->dateNaissanceClient;
+    }
+
+    public function setDateNaissanceClient(\DateTime $dateNaissanceClient)
+    {
+        $this->dateNaissanceClient = $dateNaissanceClient;
+    }
+
+    public function getAddresseClient() : string
+    {
+        return $this->addresseClient;
+    }
+
+    public function setAddresseClient(string $addresseClient)
+    {
+        $this->addresseClient = $addresseClient;
+    }
+
+    public function getTelephoneClient() : string
+    {
+        return $this->telephoneClient;
+    }
+
+    public function setTelephoneClient(string $telephoneClient)
+    {
+        $this->telephoneClient = $telephoneClient;
+    }
+
+    public function getDateInscriptionClient() : \DateTime
+    {
+        return $this->dateInscriptionClient;
+    }
+
+    public function setDateInscriptionClient(\DateTime $dateInscriptionClient)
+    {
+        $this->dateInscriptionClient = $dateInscriptionClient;
+    }
+
+    public function getPasswordClient() : string
+    {
+        return $this->passwordClient;
+    }
+
+    public function setPasswordClient(string $passwordClient)
+    {
+        $this->passwordClient = $passwordClient;
+    }
+}
