@@ -2,9 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Location
@@ -14,15 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Location
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
     /**
      * @var int
      *
@@ -57,6 +47,15 @@ class Location
      * @ORM\Column(name="fin_location", type="datetime", nullable=true)
      */
     private $finLocation;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
 
 }

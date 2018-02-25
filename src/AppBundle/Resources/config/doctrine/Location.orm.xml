@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Location" table="location">
+    <indexes>
+      <index name="voiture_location" columns="voiture_location"/>
+      <index name="client_location" columns="client_location"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="voitureLocation" type="integer" column="voiture_location" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="clientLocation" type="integer" column="client_location" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateLocation" type="datetime" column="date_location" nullable="true"/>
+    <field name="debutLocation" type="datetime" column="debut_location" nullable="true"/>
+    <field name="finLocation" type="datetime" column="fin_location" nullable="true"/>
+  </entity>
+</doctrine-mapping>

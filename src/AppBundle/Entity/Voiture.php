@@ -2,85 +2,216 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation as Api;
 
 /**
  * Voiture
- *@ApiResource
- * @ORM\Table(name="voiture", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_E9E2810FC4C4DE61", columns={"matricule_voiture"})}, indexes={@ORM\Index(name="IDX_E9E2810F91D595FB", columns={"client_voiture_id"})})
+ * @Api\ApiResource(
+ *     itemOperations={
+ *         "available_cars"={
+ *             "route_name"="list"
+ *         }
+ *     }
+ * )
+ * @ORM\Table(name="voiture", indexes={@ORM\Index(name="client_voiture", columns={"client_voiture"})})
  * @ORM\Entity
+ *
  */
 class Voiture
 {
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="client_voiture", type="integer", nullable=true)
+     */
+    private $clientVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="matricule_voiture", type="string", length=20, nullable=true)
+     */
+    private $matriculeVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="marque_voiture", type="string", length=50, nullable=true)
+     */
+    private $marqueVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="modele_voiture", type="string", length=100, nullable=true)
+     */
+    private $modeleVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="couleur_voiture", type="string", length=100, nullable=true)
+     */
+    private $couleurVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="categorie_voiture", type="string", length=100, nullable=true)
+     */
+    private $categorieVoiture;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="puissance_voiture", type="string", length=100, nullable=true)
+     */
+    private $puissanceVoiture;
+
+    /**
+     * @var float|null
+     *
+     * @ORM\Column(name="cout_par_jour_voiture", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $coutParJourVoiture;
+
+    /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="matricule_voiture", type="string", length=255, nullable=false)
+     * @return int|null
      */
-    private $matriculeVoiture;
+    public function getClientVoiture(): int
+    {
+        return $this->clientVoiture;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="marque_voiture", type="string", length=255, nullable=false)
+     * @param int|null $clientVoiture
      */
-    private $marqueVoiture;
+    public function setClientVoiture(int $clientVoiture)
+    {
+        $this->clientVoiture = $clientVoiture;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="modele_voiture", type="string", length=255, nullable=false)
+     * @return null|string
      */
-    private $modeleVoiture;
+    public function getMatriculeVoiture(): string
+    {
+        return $this->matriculeVoiture;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="couleur_voiture", type="string", length=255, nullable=false)
+     * @param null|string $matriculeVoiture
      */
-    private $couleurVoiture;
+    public function setMatriculeVoiture(string $matriculeVoiture)
+    {
+        $this->matriculeVoiture = $matriculeVoiture;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie_voiture", type="string", length=255, nullable=false)
+     * @return null|string
      */
-    private $categorieVoiture;
+    public function getMarqueVoiture(): string
+    {
+        return $this->marqueVoiture;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="puissance_voiture", type="string", length=255, nullable=false)
+     * @param null|string $marqueVoiture
      */
-    private $puissanceVoiture;
+    public function setMarqueVoiture(string $marqueVoiture)
+    {
+        $this->marqueVoiture = $marqueVoiture;
+    }
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="coutparjour_voiture", type="float", precision=10, scale=0, nullable=false)
+     * @return null|string
      */
-    private $coutparjourVoiture;
+    public function getModeleVoiture(): string
+    {
+        return $this->modeleVoiture;
+    }
 
     /**
-     * @var \Client
-     *
-     * @ORM\ManyToOne(targetEntity="Client")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client_voiture_id", referencedColumnName="id")
-     * })
+     * @param null|string $modeleVoiture
      */
-    private $clientVoiture;
+    public function setModeleVoiture(string $modeleVoiture)
+    {
+        $this->modeleVoiture = $modeleVoiture;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCouleurVoiture(): string
+    {
+        return $this->couleurVoiture;
+    }
+
+    /**
+     * @param null|string $couleurVoiture
+     */
+    public function setCouleurVoiture(string $couleurVoiture)
+    {
+        $this->couleurVoiture = $couleurVoiture;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCategorieVoiture(): string
+    {
+        return $this->categorieVoiture;
+    }
+
+    /**
+     * @param null|string $categorieVoiture
+     */
+    public function setCategorieVoiture(string $categorieVoiture)
+    {
+        $this->categorieVoiture = $categorieVoiture;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getPuissanceVoiture(): string
+    {
+        return $this->puissanceVoiture;
+    }
+
+    /**
+     * @param null|string $puissanceVoiture
+     */
+    public function setPuissanceVoiture(string $puissanceVoiture)
+    {
+        $this->puissanceVoiture = $puissanceVoiture;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getCoutParJourVoiture(): float
+    {
+        return $this->coutParJourVoiture;
+    }
+
+    /**
+     * @param float|null $coutParJourVoiture
+     */
+    public function setCoutParJourVoiture(float $coutParJourVoiture)
+    {
+        $this->coutParJourVoiture = $coutParJourVoiture;
+    }
 
     /**
      * @return int
@@ -97,135 +228,6 @@ class Voiture
     {
         $this->id = $id;
     }
-
-    /**
-     * @return string
-     */
-    public function getMatriculeVoiture(): string
-    {
-        return $this->matriculeVoiture;
-    }
-
-    /**
-     * @param string $matriculeVoiture
-     */
-    public function setMatriculeVoiture(string $matriculeVoiture)
-    {
-        $this->matriculeVoiture = $matriculeVoiture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMarqueVoiture(): string
-    {
-        return $this->marqueVoiture;
-    }
-
-    /**
-     * @param string $marqueVoiture
-     */
-    public function setMarqueVoiture(string $marqueVoiture)
-    {
-        $this->marqueVoiture = $marqueVoiture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getModeleVoiture(): string
-    {
-        return $this->modeleVoiture;
-    }
-
-    /**
-     * @param string $modeleVoiture
-     */
-    public function setModeleVoiture(string $modeleVoiture)
-    {
-        $this->modeleVoiture = $modeleVoiture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCouleurVoiture(): string
-    {
-        return $this->couleurVoiture;
-    }
-
-    /**
-     * @param string $couleurVoiture
-     */
-    public function setCouleurVoiture(string $couleurVoiture)
-    {
-        $this->couleurVoiture = $couleurVoiture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCategorieVoiture(): string
-    {
-        return $this->categorieVoiture;
-    }
-
-    /**
-     * @param string $categorieVoiture
-     */
-    public function setCategorieVoiture(string $categorieVoiture)
-    {
-        $this->categorieVoiture = $categorieVoiture;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPuissanceVoiture(): string
-    {
-        return $this->puissanceVoiture;
-    }
-
-    /**
-     * @param string $puissanceVoiture
-     */
-    public function setPuissanceVoiture(string $puissanceVoiture)
-    {
-        $this->puissanceVoiture = $puissanceVoiture;
-    }
-
-    /**
-     * @return float
-     */
-    public function getCoutparjourVoiture(): float
-    {
-        return $this->coutparjourVoiture;
-    }
-
-    /**
-     * @param float $coutparjourVoiture
-     */
-    public function setCoutparjourVoiture(float $coutparjourVoiture)
-    {
-        $this->coutparjourVoiture = $coutparjourVoiture;
-    }
-
-    /**
-     * @return \Client
-     */
-    public function getClientVoiture(): \Client
-    {
-        return $this->clientVoiture;
-    }
-
-    /**
-     * @param \Client $clientVoiture
-     */
-    public function setClientVoiture(\Client $clientVoiture)
-    {
-        $this->clientVoiture = $clientVoiture;
-    }
-
 
 
 }

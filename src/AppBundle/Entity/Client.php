@@ -2,27 +2,17 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Client
  *@ApiResource
- * @ORM\Table(name="client", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_C74404554FE06EDB", columns={"cin_client"})})
+ * @ORM\Table(name="client", uniqueConstraints={@ORM\UniqueConstraint(name="cin_client", columns={"cin_client"})})
  * @ORM\Entity
  */
 class Client
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
     /**
      * @var string
      *
@@ -80,20 +70,13 @@ class Client
     private $passwordClient;
 
     /**
-     * @return int
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
+    private $id;
 
     /**
      * @return string
@@ -222,5 +205,22 @@ class Client
     {
         $this->passwordClient = $passwordClient;
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
 
 }
